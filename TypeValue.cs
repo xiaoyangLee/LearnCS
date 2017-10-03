@@ -14,6 +14,7 @@ namespace TypeValue
     }
     public struct Typevalue
     {
+        //占内存12字节，char2字节，int4字节
         public char myChar1;
         public int myInt;
         public char myChar2;
@@ -54,10 +55,43 @@ namespace TypeValue
             //想要成功使用这个，需要项目里勾选运行使用不安全代码
             unsafe
             {
-                Console.WriteLine("Struct构造出的类所占的空间大小为:{0}",sizeof(Typevalue));
+                Console.WriteLine("Struct构造出的Typevalue类所占的空间大小为:{0}",sizeof(Typevalue));
             }
-            
-          
+            //当一个值类型转换为对象类型时，则被称为 装箱；另一方面，当一个对象类型转换为值类型时，则被称为拆箱。
+            Object obj;
+            obj = 100; //这是装箱
+
+            Console.WriteLine("装箱操作后对象obj的值为:{0}", obj);
+
+            int val = 8;
+            object obj_c = val;//先装箱
+            int nval = (int)obj_c;//再拆箱
+
+            Console.WriteLine("拆箱操作后obj_c的值为:{0}",obj_c);
+
+            Console.WriteLine(tv);
+            Console.WriteLine(tve);
+
+            //dynamic <variable_name> = value  C#的动态类型
+            //动态类型与对象类型相似，但是对象类型变量的类型检查是在编译时发生的，而动态类型变量的类型检查是在运行时发生的。
+            dynamic x = "123";
+            //GetType()方法确定变量的类型
+            Console.WriteLine(x.GetType());
+
+            // '\'是转义字符，这二者等价。@表示将后面的转义字符原样输出
+            String s1 = "C:\\Windows;";
+            String s2 = @"C:\Windows;";
+            Console.WriteLine("{0},{1}",s1, s2);
+
+            //C#中还有指针类型，但是是不安全的
+            unsafe
+            {
+                char* pstr;
+                char ca = 'a';
+                pstr = &ca;
+                Console.WriteLine("pstr指针所指向的值为:{0}",*pstr);
+            }
+
         }
     }
 }
