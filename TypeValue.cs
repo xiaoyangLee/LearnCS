@@ -37,7 +37,7 @@ namespace TypeValue
 
             string str = "这是字符串，是一种引用类型"; //字符串和类一样是一种引用类型
         
-
+            //sizeof()返回数据类型的大小，typeof()返回class的类型
             Console.WriteLine("byte类型占的存储:{0} 字节,变量a的值为:{1}", sizeof(byte),a);
             Console.WriteLine("short类型占的存储:{0} 字节,变量b的值为:{1}", sizeof(short), b);
             Console.WriteLine("int类型占的存储:{0} 字节,变量c的值为:{1}", sizeof(int), c);
