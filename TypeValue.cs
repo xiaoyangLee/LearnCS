@@ -22,8 +22,12 @@ namespace TypeValue
 
     class ExecuteTypeValue
     {
+        //C#的枚举类型,枚举类型无法在Main()函数中定义
+        enum Days { a = 1, b = 5, c = 123, d = 654, e = 12}; //相当于Days里储存了5个值，这5个值类型必须是byte short int long以及它们的无符号数类型。
+
         static void Main(string[] args)
-        {
+        {   //输出枚举类型的名称和值
+            Console.WriteLine("枚举类型的名为:{0},值为{1}",Days.d,Convert.ToInt32(Days.d));
             //C#中的整形类型：byte short int long sbyte(8位有符号) ushort uint ulong 
             byte a = 255; //byte类型值范围0~255
             short b = 32767; //short类型-32768到32767
@@ -31,14 +35,14 @@ namespace TypeValue
             long d = 123456789; // long类型8字节64位  -2^64~2^64-1
 
             double e = 3.141592654;  //double类型64位双精度浮点型
-            float f =(float)3.141592754;  //float类型32位单精度浮点型,这里值只显示小数点后6位
+            float f = (float)3.141592754;  //float类型32位单精度浮点型,这里值只显示小数点后6位
 
-            char g = 'a'; //char类型，只能用单引号输入一个字符
+            char g = 'a'; //char类型，只能用单引号输入一个字符,如果用双引号括起字符,"a"那么编译器会将其视作字符串类型,从而报错。
 
             string str = "这是字符串，是一种引用类型"; //字符串和类一样是一种引用类型
-        
-            //sizeof()返回数据类型的大小，typeof()返回class的类型
-            Console.WriteLine("byte类型占的存储:{0} 字节,变量a的值为:{1}", sizeof(byte),a);
+
+
+            Console.WriteLine("byte类型占的存储:{0} 字节,变量a的值为:{1}", sizeof(byte), a);
             Console.WriteLine("short类型占的存储:{0} 字节,变量b的值为:{1}", sizeof(short), b);
             Console.WriteLine("int类型占的存储:{0} 字节,变量c的值为:{1}", sizeof(int), c);
             Console.WriteLine("long类型占的存储:{0} 字节,变量d的值为:{1}", sizeof(long), d);
@@ -55,7 +59,7 @@ namespace TypeValue
             //想要成功使用这个，需要项目里勾选运行使用不安全代码
             unsafe
             {
-                Console.WriteLine("Struct构造出的Typevalue类所占的空间大小为:{0}",sizeof(Typevalue));
+                Console.WriteLine("Struct构造出的Typevalue类所占的空间大小为:{0}", sizeof(Typevalue));
             }
             //当一个值类型转换为对象类型时，则被称为 装箱；另一方面，当一个对象类型转换为值类型时，则被称为拆箱。
             Object obj;
@@ -67,7 +71,7 @@ namespace TypeValue
             object obj_c = val;//先装箱
             int nval = (int)obj_c;//再拆箱
 
-            Console.WriteLine("拆箱操作后obj_c的值为:{0}",obj_c);
+            Console.WriteLine("拆箱操作后obj_c的值为:{0}", obj_c);
 
             Console.WriteLine(tv);
             Console.WriteLine(tve);
@@ -81,7 +85,7 @@ namespace TypeValue
             // '\'是转义字符，这二者等价。@表示将后面的转义字符原样输出
             String s1 = "C:\\Windows;";
             String s2 = @"C:\Windows;";
-            Console.WriteLine("{0},{1}",s1, s2);
+            Console.WriteLine("{0},{1}", s1, s2);
 
             //C#中还有指针类型，但是是不安全的
             unsafe
@@ -89,9 +93,10 @@ namespace TypeValue
                 char* pstr;
                 char ca = 'a';
                 pstr = &ca;
-                Console.WriteLine("pstr指针所指向的值为:{0}",*pstr);
+                Console.WriteLine("pstr指针所指向的值为:{0}", *pstr);
             }
-
         }
+            
+        }    
     }
-}
+
