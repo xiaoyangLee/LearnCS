@@ -5,8 +5,8 @@ namespace LearnCS
     //求阶乘
     class Factorial
     {
-        //使用递归求解一个函数的阶乘。
-        public static int factorial(int num)
+        //使用递归求解一个函数的阶乘。返回值需要为long类型，否则int长度不够存储阶乘后得到的结果。
+        public static long factorial(int num)
         {
             if(num==1)
             {
