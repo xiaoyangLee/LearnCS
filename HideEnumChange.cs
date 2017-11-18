@@ -17,6 +17,7 @@ namespace LearnCS
             Days currentDay;
             //currentDay = 1; //如果赋值为1则会报错
             currentDay = 0;
+            //输出sunday
             Console.WriteLine(currentDay);
         }
     }
